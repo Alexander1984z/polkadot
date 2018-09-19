@@ -33,6 +33,7 @@ before_script:
   # - ./scripts/init.sh
   - rustup target add wasm32-unknown-unknown --toolchain nightly
   - export PATH="${CI_PROJECT_DIR}/cargo/bin/:$PATH"
+  - cargo +nightly install --git https://github.com/alexcrichton/wasm-gc
   - ./scripts/build.sh
 
 
