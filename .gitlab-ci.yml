@@ -2,7 +2,7 @@ stages:
   - test
   - build
 
-image:                             parity/rust:gitlab-ci
+image:                             parity/rust:nightly
 
 variables:
   CI_SERVER_NAME:                  "GitLab CI"
@@ -63,7 +63,8 @@ build:linux:ubuntu:amd64:
     TARGET:                        native
     RUST_TOOLCHAIN:                stable
   script:
-    - ./scripts/init.sh
+    # - ./scripts/init.sh
+    - rustup target add wasm32-unknown-unknown --toolchain nightly
     - export PATH="${CI_PROJECT_DIR}/cargo/bin/:$PATH"
     - ./scripts/build.sh 
     - cargo build --release
